@@ -13,24 +13,27 @@ Before running this code, ensure you have the following Python packages installe
     bangla_stemmer (for stemming Bengali words)
     matplotlib (for plotting the confusion matrix)
 
-You can install the required packages using pip: pip install spacy numpy gensim networkx scikit-learn matplotlib bangla-stemmer
+You can install the required packages using pip:
+
+    pip install spacy numpy gensim networkx scikit-learn matplotlib bangla-stemmer
+
 Also, you need to download the Bengali language model for spaCy
 
-Project Structure
+## Project Structure
 
 .
-├── dataset/
-│   ├── bn_human_vs_ai_corpus/
-│   │   ├── human_written/
-│   │   └── llm_generated/
-├── main.py
-└── README.md
+|-- dataset/
+|   |== bn_human_vs_ai_corpus/
+|   |   |-- human_written/
+|   |   |-- llm_generated/
+|-- main.py
+|-- README.md
 
-    dataset/bn_human_vs_ai_corpus/: Contains two folders:
-        human_written/: Text files containing human-written Bengali content.
-        llm_generated/: Text files containing LLM-generated Bengali content.
+dataset/bn_human_vs_ai_corpus/: Contains two folders:
+    human_written/: Text files containing human-written Bengali content.
+    llm_generated/: Text files containing LLM-generated Bengali content.
 
-How It Works
+## How It Works
 1. Preprocessing Text
 
     The text is preprocessed by:
@@ -66,28 +69,28 @@ How It Works
 
     A new document can be classified as human-written or LLM-generated using the trained model.
 
-How to Run
+## How to Run
 
-    Prepare the dataset: Place your text files into the respective directories human_written and llm_generated.
-    Train the model: The script will automatically load and preprocess the texts, train the Word2Vec models, extract features, and train the classifier.
-    Classify a new document: To classify a new text file, use the classify_single_document function with the path to your file.
+Prepare the dataset: Place your text files into the respective directories human_written and llm_generated.
+Train the model: The script will automatically load and preprocess the texts, train the Word2Vec models, extract features, and train the classifier.
+Classify a new document: To classify a new text file, use the classify_single_document function with the path to your file.
 
-Example Usage:
+## Example Usage:
 
 # Define the file path to the txt file
 file_path = "dataset/bn_human_vs_ai_corpus/llm_generated/shapure_choto_golpo_ai.txt"  # Replace with the actual file path
 
 # Call the function to classify the document
-classify_single_document(file_path, clf, human_w2v_model, llm_w2v_model)
+    classify_single_document(file_path, clf, human_w2v_model, llm_w2v_model)
 
 This will output the classification result as either Human-written or LLM-generated.
 Evaluation
 
 After training, the model's performance is evaluated using the following metrics:
 
-    Accuracy
-    Precision
-    Recall
-    F1 Score
+Accuracy
+Precision
+Recall
+F1 Score
 
 Additionally, a confusion matrix is plotted to visualize the classification performance.
